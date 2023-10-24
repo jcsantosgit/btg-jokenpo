@@ -1,5 +1,5 @@
 # Jogo do JokenPô (Pedra, papel e tesoura.. e +)
-Aplicação feita para teste de qualificação tecnica. Nesse projeto eu criei uma aplicação Web onde o usuário pode jogar o famoso pedra, papel e tesoura. Porém nesse jogo foi adicionado mais alguns itens na lista, o Lagarto e o Spoke.
+Aplicação feita para teste de qualificação tecnica. Nesse projeto eu criei uma aplicação Web onde o usuário pode jogar o famoso pedra, papel e tesoura. Porém nesse jogo foi adicionado mais alguns itens na lista, o Lagarto e o Spock. Devido a simplicidade do jogo não houve necessidade de usar um banco de dados, pois não há armazenamento de pontuação, nome de jogador nem ranks.
 
 ![Logo](https://github.com/jcsantosgit/btg-jokenpo/blob/main/frontend/images/pedra-papel-tesoura-2.jpeg)
 
