@@ -17,6 +17,10 @@ A aplicação ira subir na porta 5195 (http) e 7234 (https). Para visualizar os 
 | GET | /api/Jokenpo/{id} | Pesquisa um item pelo ID dele |
 | GET | /api/Jokenpo/play/{id} | Realiza uma jogada passando o ID do item selecionado pelo jogador |
 
+Para rodar a aplicação do Frontend eu utilizei o plugin Live Server no Visual Studio Code
+
+Nota: 
+`Devido ao CORS é preciso liberar as requisições do seu IP no arquivo Program.cs da aplicação backend. No meu caso tive que liberar o http://127.0.0.1:5500/ que é gerado automaticamente pelo plugin Live Server`
 
 ## Telas do Jogo Feito em HTML, CSS e Javascript
 
