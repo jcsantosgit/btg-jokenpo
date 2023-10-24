@@ -22,6 +22,10 @@ Para rodar a aplicação do Frontend eu utilizei o plugin Live Server no Visual 
 Nota: 
 `Devido ao CORS é preciso liberar as requisições do seu IP no arquivo Program.cs da aplicação backend. No meu caso tive que liberar o http://127.0.0.1:5500/ que é gerado automaticamente pelo plugin Live Server`
 
+Mudi aqui
+![image](https://github.com/jcsantosgit/btg-jokenpo/assets/6317939/3c6536d4-eb2b-40e2-be70-a0852fde81a3)
+
+
 ## Telas do Jogo Feito em HTML, CSS e Javascript
 
 ### Tela Inciail
