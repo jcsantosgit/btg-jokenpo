@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo JokenPô</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <div class="container-fluid">
+        <h3>Jogando</h3>
+        <hr>
+        <p>
+            Faça a sua escolha:
+        </p>
+        <div class="row">
+            <div class="col-xm-3 col-sm-3 col-md-1 col-lg-1">
+                <button data-id="1">
+                    <img src="./images/1.png" alt="tesoura">
+                </button>
+            </div>
+            <div class="col-xm-3 col-sm-3 col-md-1 col-lg-1">
+                <button data-id="2">
+                    <img src="./images/2.png" alt="tesoura">
+                </button>
+            </div>         
+            <div class="col-xm-3 col-sm-3 col-md-1 col-lg-1">
+                <button data-id="3">
+                    <img src="./images/3.png" alt="tesoura">
+                </button>
+            </div>            
+            <div class="col-xm-3 col-sm-3 col-md-1 col-lg-1">
+                <button data-id="4">
+                    <img src="./images/4.png" alt="tesoura">
+                </button>
+            </div>   
+            <div class="col-xm-3 col-sm-3 col-md-1 col-lg-1">
+                <button data-id="5">
+                    <img src="./images/5.png" alt="tesoura">
+                </button>
+            </div>                                                                                                    
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-xm-3 col-sm-3 col-md-2 col-lg-2">
+                <p>Sua escolha:</p>
+                <div id="jogador" >
+                    
+                </div>
+            </div>
+            <div class="col-xm-3 col-sm-3 col-md-2 col-lg-2">
+                <p>Escolha do jogo:</p>
+                <div id="game">
+                    
+                </div>
+            </div>            
+        </div>
+
+        <p id="mensagem" class="mensagem text-info">
+            
+        </p>
+        <p class="mt-5">
+            Obs: para jogar novamente, basta fazer uma nova escolha.
+        </p>
+
+        <div class="navegacao">
+            <a class="btn btn-warning" href="index.html">Encerrar</a>
+        </div>
+    </div>
+
+
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#myModal">
+        Ver instruções
+    </button>
+    
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Instruções</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            
+
+            <p>
+                Tesoura ganha de <strong>Papel</strong> e também de <strong>Lagarto</strong>
+            </p>
+            <p>
+                Papel  ganha de <strong>Pedra</strong> e também de <strong>Spock</strong>
+            </p>    
+            <p>
+                Pedra ganha de <strong>Tesoura</strong> e também de <strong>Lagarto</strong>
+            </p>        
+            <p>
+                Lagarto ganha de <strong>Papel</strong> e também de <strong>Spock</strong>
+            </p>
+            <p>
+                Spock ganha de <strong>Pedra</strong> e também de <strong>Tesoura</strong>
+            </p>
+            <p>
+                Também é possível <strong>empatar</strong> no jogo. Caso não canha nessas condições informadas, significa que você perdeu. 
+            </p>            
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+
+        </div>
+    </div>
+    </div>    
+
+
+    <footer class="footer">
+        <a href="www.jcsantos.net.br" >Desenvolvido por João Santos</a>
+    </footer>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            
+            
+            
+            $("button").click(function(){
+                
+                var _id = $(this).data('id');
+                var service = 'http://localhost:5195/api/jokenpo/play/' + _id;
+
+            $.get(service, null)
+            .done(function(resp){
+                document.querySelector('#mensagem').innerHTML = resp.message;
+
+                var img1 = document.createElement('img');
+                img1.src = './images/' + resp.player.id + '.png'
+
+                var img2 = document.createElement('img');
+                img2.src = './images/' + resp.game.id + '.png'
+
+                document.querySelector('#jogador').innerHTML = '';
+                document.querySelector('#game').innerHTML = '';
+
+                document.querySelector('#jogador').append(img1);
+                document.querySelector('#game').append(img2);
+
+                console.log(resp);
+            })
+            .fail(function(resp){
+                document.querySelector('#mensagem').innerHTML = 'Falha na requisição';
+                console.log(resp);
+            })
+        });
+        });        
+    </script>
+</body>
+</html>
